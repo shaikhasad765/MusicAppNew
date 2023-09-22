@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, FlatList, TouchableOpacity, Image, StyleSheet, ImageBackground, ScrollView } from 'react-native';
+import { View, Text, ScrollView, TouchableOpacity, Image, StyleSheet, ImageBackground } from 'react-native';
 import albumData from '../AlbumData/albumData';
 import HomeWallpaper from '../assets/images/HomeWallpaper.jpg';
 import * as Animatable from 'react-native-animatable';
@@ -30,21 +30,10 @@ const HomeScreen = ({ navigation }) => {
     return (
         <ImageBackground source={HomeWallpaper} style={styles.backgroundImage}>
             <View style={styles.container}>
-                {/* FlatList to display the album data */}
-                {/* <FlatList
-                    data={albumData}
-                    renderItem={renderAlbums}
-                    keyExtractor={(item) => item.id.toString()}
-                    showsVerticalScrollIndicator={false}
-                    showsHorizontalScrollIndicator={false}
-                /> */}
-
-                <ScrollView 
-                    horizontal={false} // Change to true for horizontal Album View 
-                    showsHorizontalScrollIndicator={false}>
+                {/* ScrollView to display the albums horizontally */}
+                <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
                     {renderAlbums()}
                 </ScrollView>
-                
             </View>
         </ImageBackground>
     );
@@ -66,12 +55,12 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         marginBottom: 20,
-        marginRight: 15,
-        width: 350,
+        width: 350, // You can adjust the width as needed
         padding: 20,
         backgroundColor: 'white',
         borderRadius: 20,
         overflow: 'hidden',
+        marginRight: 10, // Add some margin between albums
     },
     albumImage: {
         width: 150,
